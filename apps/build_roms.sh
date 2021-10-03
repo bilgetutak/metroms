@@ -54,7 +54,7 @@ fi
 # Setting up things, like compilers etc:
 export ROMS_APPLICATION=$1
 #export roms_ver="roms-3.6"
-export roms_ver="roms-trunk820"
+export roms_ver="roms-trunk1041"
 
 export USE_MPI=on
 export USE_MPIF90=on
@@ -63,7 +63,7 @@ export USE_OpenMP=
 #export USE_DEBUG=on
 export USE_NETCDF4=on
 #export USE_PARALLEL_IO=on
-export which_MPI=mpich2        # compile with MPICH2 library
+export which_MPI=openmpi        # compile with MPICH2 library
 export USE_CICE=on
 
 if [ "${METROMS_MYHOST}" == "metlocal" ]; then
@@ -75,6 +75,11 @@ elif [ "${METROMS_MYHOST}" == "fram" ] ; then
     export I_MPI_F90=ifort
 elif [ "${METROMS_MYHOST}" == "met_ppi" ] ; then
     export FORT=ifort
+    export USE_MPI=on
+    export USE_MPIF90=on
+    export which_MPI=openmpi
+elif [ "${METROMS_MYHOST}" == "sariyer" ] ; then
+    export FORT=gfortran
     export USE_MPI=on
     export USE_MPIF90=on
     export which_MPI=openmpi
@@ -121,6 +126,7 @@ touch $MY_ROMS_SRC/ROMS/Modules/mod_ice.F
 # these configurations files up-to-date.
 
 export COMPILERS=${MY_ROMS_SRC}/Compilers
+# export COMPILERS=${METROMS_BASEDIR}/Compilers
 
 cd ${METROMS_APPDIR}
 
@@ -300,6 +306,7 @@ if [ -n "${USE_NETCDF4:+1}" ]; then
  export PATH=/usr/bin:$PATH
 fi
 
+# export MY_HEADER_DIR=${MY_PROJECT_DIR}/include
 export MY_HEADER_DIR=${MY_PROJECT_DIR}/include
 export MY_ANALYTICAL_DIR=${MY_HEADER_DIR}
 

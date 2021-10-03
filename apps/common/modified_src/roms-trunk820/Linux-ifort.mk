@@ -1,1 +1,1 @@
-Linux-ifort.mk_met_ppi_opath
+../roms-trunk1041/Linux-gfortran.mk_sariyer

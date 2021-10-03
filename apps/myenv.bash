@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 export METROMS_MYHOST=$1
 echo "loading $METROMS_MYHOST paths"
@@ -58,6 +58,12 @@ elif [ "$METROMS_MYHOST" == "fram" ]; then
     export METROMS_TMPDIR=/cluster/work/users/$USER/metroms_run
     export METROMS_BLDDIR=$METROMS_TMPDIR
     export METROMS_APPDIR=$HOME/metroms_apps
+elif [ "$METROMS_MYHOST" == "sariyer" ]; then
+    export METROMS_BASEDIR=$HOME/margi/metroms
+    export METROMS_TMPDIR=$HOME/margi/metroms_run
+    export METROMS_BLDDIR=$METROMS_TMPDIR
+    export METROMS_APPDIR=$HOME/margi/metroms/apps
+    export METROMS_MYHOST=sariyer
 else
     echo "Undefined METROMS_MYHOST ", $METROMS_MYHOST
 fi

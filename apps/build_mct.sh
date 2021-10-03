@@ -19,6 +19,8 @@ cd $MCT_DIR
 
 if [ ${METROMS_MYHOST} == "metlocal" ] || [ "${METROMS_MYHOST}" == "met_ppi" ]; then
     FORT=mpif90
+elif [ ${METROMS_MYHOST} == "sariyer" ] ; then
+    FORT=mpif90
 elif [ ${METROMS_MYHOST} == "vilje" ] ; then
     FORT=ifort
 elif [ ${METROMS_MYHOST} == "fram" ] ; then

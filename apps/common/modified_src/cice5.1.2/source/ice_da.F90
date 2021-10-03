@@ -340,7 +340,8 @@ subroutine da_coin    (nx_block,            ny_block,      &
       rda = dt / Tobs
       if (my_task == master_task) write(nu_diag,*) 'rda = ', rda
 
-      if (da_sic == .true.) then
+      !if (da_sic == .true.) then
+      if (da_sic .eqv. .true.) then
 
          do j = 1, ny_block
          do i = 1, nx_block
